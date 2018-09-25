@@ -1,0 +1,27 @@
+{
+  "name": "typescript-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcospcury/typescript-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcospcury/typescript-study/issues"
+  },
+  "homepage": "https://github.com/marcospcury/typescript-study#readme",
+  "devDependencies": {
+    "typescript": "^3.0.3"
+  }
+}
