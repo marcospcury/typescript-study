@@ -1,6 +1,5 @@
 import { NegociacaoController } from './controllers/NegociacaoController';
 
 export const controller = new NegociacaoController();
-document
-  .querySelector('.form')
-  .addEventListener('submit', controller.adiciona.bind(controller));
+let element = <Element>document.querySelector('.form');
+element.addEventListener('submit', controller.adiciona.bind(controller));

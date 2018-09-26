@@ -8,7 +8,7 @@ export class NegociacaoController {
   private _inputValor: HTMLInputElement;
   private _negociacoes = new Negociacoes();
   private _negociacoesView = new NegociacoesView('#negociacoesView');
-  private _mensagenView = new MensagemView('#mensagemView');
+  private _mensagemView = new MensagemView('#mensagemView');
 
   constructor() {
     this._inputData = <HTMLInputElement>document.querySelector('#data');
@@ -19,14 +19,33 @@ export class NegociacaoController {
 
   adiciona(event: Event) {
     event.preventDefault();
+    const data = new Date(this._inputData.value.replace(/-/g, '/'));
+    if (!this._ehDiaUtil(data)) {
+      this._mensagemView.update('Somente negociações em dias úteis, por favor!');
+      return
+    }
 
     const negociacao = new Negociacao(
-      new Date(this._inputData.value.replace(/-/g, '/')),
+      data,
       parseInt(this._inputQuantidade.value),
       parseFloat(this._inputValor.value));
 
     this._negociacoes.adiciona(negociacao);
     this._negociacoesView.update(this._negociacoes);
-    this._mensagenView.update('Negociação adicionada com sucesso');
+    this._mensagemView.update('Negociação adicionada com sucesso');
   }
+
+  private _ehDiaUtil(data: Date) {
+    return data.getDay() != DiaDaSemana.Sabado && data.getDay() != DiaDaSemana.Domingo;
+  }
+}
+
+enum DiaDaSemana {
+  Domingo,
+  Segunda,
+  Terca,
+  Quarta,
+  Quinta,
+  Sexta,
+  Sabado,
 }
