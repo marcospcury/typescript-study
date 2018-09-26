@@ -1,3 +1,5 @@
+import { logarTempoDeExecucao } from '../helpers/decorators/logarTempoDeExecucao';
+
 export abstract class View<T> {
   protected _elemento: Element;
 
@@ -5,6 +7,7 @@ export abstract class View<T> {
     this._elemento = <Element>document.querySelector(seletor);
   }
 
+  @logarTempoDeExecucao()
   update(model: T): void {
     let template = this.template(model);
     if (this.escapar)
