@@ -1,12 +1,19 @@
 import { Negociacoes, Negociacao } from '../models/index';
 import { NegociacoesView, MensagemView } from '../views/index';
-import { logarTempoDeExecucao } from '../helpers/decorators/index';
+import { logarTempoDeExecucao, domInject } from '../helpers/decorators/index';
 
 
 export class NegociacaoController {
+  @domInject('#data')
   private _inputData: HTMLInputElement;
+
+  @domInject('#quantidade')
   private _inputQuantidade: HTMLInputElement;
+
+  @domInject('#valor')
   private _inputValor: HTMLInputElement;
+
+
   private _negociacoes = new Negociacoes();
   private _negociacoesView = new NegociacoesView('#negociacoesView');
   private _mensagemView = new MensagemView('#mensagemView');
